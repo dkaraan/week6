@@ -1,4 +1,7 @@
 import { getResourceIds, getResourceData } from "../../lib/resources";
+import Layout from '../../components/layout';
+import Head from 'next/head';
+import Link from 'next/link';
 
 //every next.js app that uses dynamic urls must include getStaticPaths() to tell next.js what and where all the possible urls are
 export async function getStaticPaths(){
@@ -26,8 +29,9 @@ export async function getStaticProps({params}) {
 //receiving item data that it receives from getStaticProps()
 export default function Entry({ itemData }){
   console.log(itemData);
-  
   return(
+
+  <Layout>
   <article className="card col-6">
     <div className ="card-body">
     <h5 className ="card-title">{itemData.data.name}</h5>
@@ -42,6 +46,9 @@ export default function Entry({ itemData }){
     : null
     }
     </div>
+
+
   </article>
+  </Layout>
   );
 }
